@@ -11,7 +11,10 @@
     phases:
       install:
         commands:
-          - pip install boto3  
+          - pip install cx_Oracle  
+          - pip install RobotFramework
+          - pip install jaydebeapi 
+          - pip install boto3 
           - pip install --upgrade pip
           - python -m pip install pylint
           - python -m pip install pytest
@@ -20,23 +23,14 @@
         commands:
           - export PYTHONPATH=.
           - pylint ssm.py|| exit 0
-          - NewSha1ForJsonFile="$(python -m sha1 data.json)"
-          - NewSha1ForPyfile="$(python -m sha1 ssm.py)"
-          
-          - echo "${sha1ForJsonFile}"
-          - echo "${NewSha1ForJsonFile}"
-          - echo "${sha1ForPyFile}"
-          - echo "${NewSha1ForPyfile}" 
+
           
       build:
         commands:
           # - command
       post_build:
         commands:
-           - if [ "$NewSha1ForPyfile" != "$sha1ForPyFile" ] || [ "$NewSha1ForJsonFile" != "$sha1ForJsonFile" ]  ; then python ssm.py ; 
-                aws ssm put-parameter --name "sh1keyForJsonFile" --type "SecureString" --value $NewSha1ForJsonFile --overwrite ;  
-                aws ssm put-parameter --name "sh1keyForPyFile" --type "SecureString" --value $NewSha1ForPyfile --overwrite ;
-            fi;
+
 
           # - command
     artifacts:
