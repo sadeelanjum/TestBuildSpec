@@ -8,13 +8,16 @@
     phases:
       install:
         commands:
-	  - pip install cx_Oracle
-	  - pip install RobotFramework
-          - pip install jaydebeapi
-          - pip install boto3  
-          - pip install --upgrade pip
-          - python -m pip install pylint
-          - python -m pip install pytest
+	- pip install cx_Oracle
+	- pip install RobotFramework
+        - pip install jaydebeapi
+        - pip install boto3  
+        - pip install --upgrade pip
+        - python -m pip install pylint
+        - python -m pip install pytest
+	
+	  
+
             
       pre_build:
         commands:
