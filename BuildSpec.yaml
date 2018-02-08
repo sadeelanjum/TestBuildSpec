@@ -1,0 +1,33 @@
+    version: 0.2
+
+    env:
+      #variables:
+      #parameter-store:
+
+          
+    phases:
+      install:
+        commands:
+		  - pip install cx_Oracle
+		  - pip install RobotFramework
+		  - pip install jaydebeapi
+          - pip install boto3  
+          - pip install --upgrade pip
+          - python -m pip install pylint
+          - python -m pip install pytest
+            
+      pre_build:
+        commands:
+          - export PYTHONPATH=.
+          
+      build:
+        commands:
+          # - command
+      post_build:
+
+
+          # - command
+    artifacts:
+      files:
+      discard-paths: No
+     # base-directory: ssmParams
